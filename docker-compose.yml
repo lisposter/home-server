@@ -58,4 +58,57 @@ services:
       - 6881:6881/udp
       - 8080:8080
     restart: unless-stopped
-  
+  jellyfin:
+    image: linuxserver/jellyfin
+    container_name: jellyfin
+    environment:
+      - PUID=${PUID}
+      - PGID=${GUID}
+      - TZ=Asia/Shanghai
+    volumes:
+      - ${DOCKER_CONFIG}/jellfin:/config
+      - ${DATA}/media/tv:/data/tvshows
+      - ${DATA}/media/movies:/data/movies
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    devices:
+      - /dev/dri:/dev/dri
+    restart: unless-stopped
+  filebrowser:
+    image: filebrowser/filebrowser:s6
+    container_name: filebrowser
+    volumes:
+      - ${DATA}:/srv/data
+      - ${DOCKER_CONFIG}:/srv/config
+      - ${DOCKER_CONFIG}/filebrowse/filebrowser.db:/database/filebrowser.db
+    environment:
+      - PUID=${PUID}
+      - PGID=${GUID}
+    ports:
+      - 8002:80
+  heimdall:
+    image: linuxserver/heimdall
+    container_name: heimdall
+    environment:
+      - PUID=${PUID}
+      - PGID=${GUID}
+      - TZ=Asia/Shanghai
+    volumes:
+      - ${DOCKER_CONFIG}/heimdall:/config
+    ports:
+      - 8001:80
+      - 443:443
+    restart: unless-stopped
+  npm:
+    image: jc21/nginx-proxy-manager:latest
+    restart: unless-stopped
+    ports:
+      - 8000:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ${DOCKER_CONFIG}/npm/data:/data
+      - ${DOCKER_CONFIG}/npm/letsencrypt:/etc/letsencrypt
