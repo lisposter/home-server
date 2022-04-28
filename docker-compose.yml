@@ -10,7 +10,7 @@ services:
     volumes:
       - ${DOCKER_CONFIG}/sonarr:/config
       - ${DATA}/media/tv:/tv
-      - ${DATA}/downloads/tv:/downloads
+      - ${DATA}/downloads:/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
