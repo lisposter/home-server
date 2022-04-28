@@ -106,9 +106,9 @@ services:
     image: jc21/nginx-proxy-manager:latest
     restart: unless-stopped
     ports:
-      - 8000:80'
-      - '81:81'
-      - '443:443'
+      - 8000:80
+      - 81:81
+      - 443:443
     volumes:
       - ${DOCKER_CONFIG}/npm/data:/data
       - ${DOCKER_CONFIG}/npm/letsencrypt:/etc/letsencrypt
