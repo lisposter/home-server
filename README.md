@@ -34,5 +34,5 @@ data
 
 # Usage
 ```sh
-DOCKER_CONFIG=/path/to/config DATA=/path/to/data UID="$(id -u)" GID="$(id -g)" docker-compose up
+DOCKER_CONFIG=/path/to/config DATA=/path/to/data PUID="$(id -u)" GUID="$(id -g)" docker-compose up -d
 ```
