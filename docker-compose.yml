@@ -83,7 +83,7 @@ services:
     volumes:
       - ${DATA}:/srv/data
       - ${DOCKER_CONFIG}:/srv/config
-      - ${DOCKER_CONFIG}/filebrowse/filebrowser.db:/database/filebrowser.db
+      - ${DOCKER_CONFIG}/filebrowser/filebrowser.db:/database/filebrowser.db
     environment:
       - PUID=${PUID}
       - PGID=${GUID}
@@ -100,10 +100,11 @@ services:
       - ${DOCKER_CONFIG}/heimdall:/config
     ports:
       - 8001:80
-      - 443:443
+      - 8443:443
     restart: unless-stopped
   npm:
     image: jc21/nginx-proxy-manager:latest
+    container_name: npm
     restart: unless-stopped
     ports:
       - 8000:80
