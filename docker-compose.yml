@@ -160,22 +160,22 @@ services:
       - ${DOCKER_CONFIG}/homeassistant:/config
       - /run/dbus:/run/dbus:ro
     network_mode: host
-  # code-server:
-  #   image: linuxserver/code-server:latest
-  #   container_name: code-server
-  #   environment:
-  #     - PUID=1000
-  #     - PGID=1000
-  #     - TZ=Etc/UTC
-  #     - PASSWORD=password #optional
-  #     - HASHED_PASSWORD= #optional
-  #     - SUDO_PASSWORD=password #optional
-  #     - SUDO_PASSWORD_HASH= #optional
-  #     - PROXY_DOMAIN=code-server.my.domain #optional
-  #     - DEFAULT_WORKSPACE=/config/workspace #optional
-  #   volumes:
-  #     - /path/to/code-server/config:/config
-  #   ports:
-  #     - 8443:8443
-  #   restart: unless-stopped
+  code-server:
+    image: linuxserver/code-server:latest
+    container_name: code-server
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=Asia/Shanghai
+      - PASSWORD=${PASSWORD} #optional
+      # - HASHED_PASSWORD= #optional
+      - SUDO_PASSWORD=${SUDO_PASSWORD} #optional
+      # - SUDO_PASSWORD_HASH= #optional
+      # - PROXY_DOMAIN=code-server.my.domain #optional
+      - DEFAULT_WORKSPACE=${DEFAULT_WORKSPACE} #optional
+    volumes:
+      - ${DOCKER_CONFIG}/code-server:/config
+    ports:
+      - 8008:8443
+    restart: unless-stopped
 
