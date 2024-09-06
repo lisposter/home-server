@@ -5,7 +5,7 @@ services:
     container_name: sonarr
     environment:
       - PUID=${PUID}
-      - PGID=${GUID}
+      - PGID=${PGID}
       - TZ=Asia/Shanghai
     volumes:
       - ${DOCKER_CONFIG}/sonarr:/config
@@ -19,7 +19,7 @@ services:
     container_name: radarr
     environment:
       - PUID=${PUID}
-      - PGID=${GUID}
+      - PGID=${PGID}
       - TZ=Asia/Shanghai
     volumes:
       - ${DOCKER_CONFIG}/radarr:/config
@@ -33,7 +33,7 @@ services:
     container_name: lidarr
     environment:
       - PUID=${PUID}
-      - PGID=${GUID}
+      - PGID=${PGID}
       - TZ=Asia/Shanghai
     volumes:
       - ${DOCKER_CONFIG}/lidarr:/config
@@ -47,7 +47,7 @@ services:
     container_name: jackett
     environment:
       - PUID=${PUID}
-      - PGID=${GUID}
+      - PGID=${PGID}
       - TZ=Asia/Shanghai
       - AUTO_UPDATE=true
     volumes:
@@ -61,7 +61,7 @@ services:
     container_name: qbittorrent
     environment:
       - PUID=${PUID}
-      - PGID=${GUID}
+      - PGID=${PGID}
       - TZ=Asia/Shanghai
       - WEBUI_PORT=8080
     volumes:
@@ -78,7 +78,7 @@ services:
     privileged: true
     environment:
       - PUID=${PUID}
-      - PGID=${GUID}
+      - PGID=${PGID}
       - TZ=Asia/Shanghai
     volumes:
       - ${DOCKER_CONFIG}/jellfin:/config
@@ -98,7 +98,7 @@ services:
     container_name: emby
     environment:
       - PUID=${PUID}
-      - PGID=${GUID}
+      - PGID=${PGID}
       - TZ=Asia/Shanghai
     volumes:
       - ${DOCKER_CONFIG}/emby:/config
@@ -119,7 +119,7 @@ services:
       - ${DOCKER_CONFIG}/filebrowser/filebrowser.db:/database/filebrowser.db
     environment:
       - PUID=${PUID}
-      - PGID=${GUID}
+      - PGID=${PGID}
     ports:
       - 8002:80
   heimdall:
@@ -127,7 +127,7 @@ services:
     container_name: heimdall
     environment:
       - PUID=${PUID}
-      - PGID=${GUID}
+      - PGID=${PGID}
       - TZ=Asia/Shanghai
     volumes:
       - ${DOCKER_CONFIG}/heimdall:/config
@@ -152,7 +152,7 @@ services:
     restart: unless-stopped
     environment:
       - PUID=${PUID}
-      - PGID=${GUID}
+      - PGID=${PGID}
       - TZ=Asia/Shanghai
     ports:
       - 8123:8123
