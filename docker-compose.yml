@@ -73,44 +73,44 @@ services:
       - 6881:6881/udp
       - 8080:8080
     restart: unless-stopped
-  jellyfin:
-    image: linuxserver/jellyfin:latest
-    container_name: jellyfin
-    privileged: true
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=Asia/Shanghai
-    volumes:
-      - ${DOCKER_CONFIG}/jellfin:/config
-      - ${DOCKER_CONFIG}/fonts:/usr/share/fonts/
-      - ${DATA}/media/tv:/data/tvshows
-      - ${DATA}/media/movies:/data/movies
-    ports:
-      - 8096:8096
-      - 8920:8920 #optional
-      - 7359:7359/udp #optional
-      - 1900:1900/udp #optional
-    devices:
-      - /dev/dri:/dev/dri
-    restart: unless-stopped
-  emby:
-    image: linuxserver/emby:latest
-    container_name: emby
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=Asia/Shanghai
-    volumes:
-      - ${DOCKER_CONFIG}/emby:/config
-      - ${DATA}/media/tv:/data/tvshows
-      - ${DATA}/media/movies:/data/movies
-    ports:
-      - 8098:8096
-      - 8922:8920 #optional
-    devices:
-      - /dev/dri:/dev/dri #optional
-    restart: unless-stopped
+  # jellyfin:
+  #   image: linuxserver/jellyfin:latest
+  #   container_name: jellyfin
+  #   privileged: true
+  #   environment:
+  #     - PUID=${PUID}
+  #     - PGID=${PGID}
+  #     - TZ=Asia/Shanghai
+  #   volumes:
+  #     - ${DOCKER_CONFIG}/jellfin:/config
+  #     - ${DOCKER_CONFIG}/fonts:/usr/share/fonts/
+  #     - ${DATA}/media/tv:/data/tvshows
+  #     - ${DATA}/media/movies:/data/movies
+  #   ports:
+  #     - 8096:8096
+  #     - 8920:8920 #optional
+  #     - 7359:7359/udp #optional
+  #     - 1900:1900/udp #optional
+  #   devices:
+  #     - /dev/dri:/dev/dri
+  #   restart: unless-stopped
+  # emby:
+  #   image: linuxserver/emby:latest
+  #   container_name: emby
+  #   environment:
+  #     - PUID=${PUID}
+  #     - PGID=${PGID}
+  #     - TZ=Asia/Shanghai
+  #   volumes:
+  #     - ${DOCKER_CONFIG}/emby:/config
+  #     - ${DATA}/media/tv:/data/tvshows
+  #     - ${DATA}/media/movies:/data/movies
+  #   ports:
+  #     - 8098:8096
+  #     - 8922:8920 #optional
+  #   devices:
+  #     - /dev/dri:/dev/dri #optional
+  #   restart: unless-stopped
   filebrowser:
     image: filebrowser/filebrowser:s6
     container_name: filebrowser
