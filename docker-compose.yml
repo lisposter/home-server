@@ -25,7 +25,7 @@ services:
     volumes:
       - ${DOCKER_CONFIG}/radarr:/config
       - ${DATA}/media/movies:/movies
-      - ${DATA}/downloads/tv:/downloads/tv
+      - ${DATA}/downloads/movies:/downloads/movies
     ports:
       - 7878:7878
     restart: unless-stopped
