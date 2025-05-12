@@ -14,6 +14,7 @@ services:
     ports:
       - 8989:8989
     restart: unless-stopped
+    
   radarr:
     image: linuxserver/radarr:latest
     container_name: radarr
@@ -29,6 +30,7 @@ services:
     ports:
       - 7878:7878
     restart: unless-stopped
+    
   # lidarr:
   #   image: linuxserver/lidarr:latest
   #   container_name: lidarr
@@ -43,6 +45,7 @@ services:
   #   ports:
   #     - 8686:8686
   #   restart: unless-stopped
+  
   jackett:
     image: linuxserver/jackett:latest
     container_name: jackett
@@ -57,6 +60,7 @@ services:
     ports:
       - 9117:9117
     restart: unless-stopped
+    
   qbittorrent:
     image: linuxserver/qbittorrent:latest
     container_name: qbittorrent
@@ -73,6 +77,7 @@ services:
       - 6881:6881/udp
       - 8080:8080
     restart: unless-stopped
+    
   # jellyfin:
   #   image: linuxserver/jellyfin:latest
   #   container_name: jellyfin
@@ -94,6 +99,7 @@ services:
   #   devices:
   #     - /dev/dri:/dev/dri
   #   restart: unless-stopped
+  
   # emby:
   #   image: linuxserver/emby:latest
   #   container_name: emby
@@ -111,6 +117,7 @@ services:
   #   devices:
   #     - /dev/dri:/dev/dri #optional
   #   restart: unless-stopped
+  
   filebrowser:
     image: filebrowser/filebrowser:s6
     container_name: filebrowser
@@ -123,6 +130,7 @@ services:
       - PGID=${PGID}
     ports:
       - 8002:80
+      
   heimdall:
     image: linuxserver/heimdall:latest
     container_name: heimdall
@@ -136,6 +144,7 @@ services:
       - 8001:80
       - 8443:443
     restart: unless-stopped
+    
   npm:
     image: jc21/nginx-proxy-manager:latest
     container_name: npm
@@ -147,6 +156,7 @@ services:
     volumes:
       - ${DOCKER_CONFIG}/npm/data:/data
       - ${DOCKER_CONFIG}/npm/letsencrypt:/etc/letsencrypt
+      
   homeassistant:
     image: home-assistant/home-assistant:stable
     container_name: homeassistant
@@ -159,6 +169,7 @@ services:
       - ${DOCKER_CONFIG}/homeassistant:/config
       - /run/dbus:/run/dbus:ro
     network_mode: host
+    
   code-server:
     image: linuxserver/code-server:latest
     container_name: code-server
